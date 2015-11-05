@@ -35,10 +35,10 @@ public class lightSource : MonoBehaviour {
 		Vector3 direction =  goPosition - transform.position;
 	
 		Vector3 [] goVertices = new Vector3[4];
-		goVertices [0] = new Vector3 (goPosition.x - .5f, goPosition.y - .5f); //bottom left corner
-		goVertices [1] = new Vector3 (goPosition.x + .5f, goPosition.y - .5f); //bottom right corner
-		goVertices [2] = new Vector3 (goPosition.x - .5f, goPosition.y + .5f); //top left corner
-		goVertices [3] = new Vector3 (goPosition.x + .5f, goPosition.y + .5f); //top right corner
+		goVertices [0] = new Vector3 (goPosition.x - 5f, goPosition.y - 5f); //bottom left corner
+		goVertices [1] = new Vector3 (goPosition.x + 5f, goPosition.y - 5f); //bottom right corner
+		goVertices [2] = new Vector3 (goPosition.x - 5f, goPosition.y + 5f); //top left corner
+		goVertices [3] = new Vector3 (goPosition.x + 5f, goPosition.y + 5f); //top right corner
 
 		float largest  = -200;
 		float smallest =  200;
@@ -58,8 +58,8 @@ public class lightSource : MonoBehaviour {
 		Vector3 dir2 = (vertices [1] - transform.position);
 		dir1.Normalize ();
 		dir2.Normalize ();
-		vertices[2] = vertices[0] + 15*dir1;
-		vertices[3] = vertices[1] + 15*dir2;
+		vertices[2] = vertices[0] + 150*dir1;
+		vertices[3] = vertices[1] + 150*dir2;
 
 		return vertices;
 	}
