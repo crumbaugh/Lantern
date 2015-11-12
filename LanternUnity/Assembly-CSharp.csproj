@@ -45,7 +45,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\InteractWithObjects.cs" />
+     <Compile Include="Assets\PickUpPutDown.cs" />
      <Compile Include="Assets\PlayerMovement.cs" />
+     <Compile Include="Assets\TileMap.cs" />
      <Compile Include="Assets\lightSource.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
