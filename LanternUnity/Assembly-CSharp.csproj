@@ -45,11 +45,15 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\InteractWithObjects.cs" />
-     <Compile Include="Assets\PickUpPutDown.cs" />
-     <Compile Include="Assets\PlayerMovement.cs" />
-     <Compile Include="Assets\TileMap.cs" />
-     <Compile Include="Assets\lightSource.cs" />
+     <Compile Include="Assets\Scripts\DieInShadows.cs" />
+     <Compile Include="Assets\Scripts\HandleVertices.cs" />
+     <Compile Include="Assets\Scripts\InteractWithObjects.cs" />
+     <Compile Include="Assets\Scripts\KillPlayer.cs" />
+     <Compile Include="Assets\Scripts\OpenDoor.cs" />
+     <Compile Include="Assets\Scripts\PickUpPutDown.cs" />
+     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\TileMap.cs" />
+     <Compile Include="Assets\Scripts\lightSource.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
