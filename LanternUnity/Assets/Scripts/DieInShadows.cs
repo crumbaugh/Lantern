@@ -14,7 +14,7 @@ public class DieInShadows : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Vector3.Distance(transform.position, lantern.transform.position) > 45)
-			Application.LoadLevel ("test");
+			Application.LoadLevel(Application.loadedLevelName);
 		/*
 		corners[0].x = transform.position.x - 5;
 		corners[0].y = transform.position.y - 5;
@@ -41,6 +41,6 @@ public class DieInShadows : MonoBehaviour {
 			die &= Physics.Raycast(loc, up, 10);
 		//}
 		if (die)
-			Application.LoadLevel ("test");
+			Application.LoadLevel (Application.loadedLevelName);
 	}
 }

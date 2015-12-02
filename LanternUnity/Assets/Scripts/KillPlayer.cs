@@ -14,7 +14,7 @@ public class KillPlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Lantern.transform.position == transform.position) {
-			Application.LoadLevel("test");
+			Application.LoadLevel(Application.loadedLevelName);
 		}
 	}
 }
