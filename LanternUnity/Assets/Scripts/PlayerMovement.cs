@@ -21,28 +21,33 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void getDestination() {
-		Vector3 position = transform.position;
+        Vector3 touchpos;
+        if (Input.touchCount > 0)
+            touchpos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+        else 
+            touchpos = transform.position;
+        Vector3 position = transform.position;
+                
+        if (Input.GetKey(KeyCode.W) || (Mathf.Abs(touchpos.y - position.y) > Mathf.Abs(touchpos.x - position.x) && touchpos.y > position.y)) {
+            string tempTag = map.getElementTag(position.x, position.y + 10);
+            if (tempTag != "Wall" && tempTag != "WallBoundary")
+                position.y += 10;
+        } else if (Input.GetKey(KeyCode.A) || (Mathf.Abs(touchpos.x - position.x) > Mathf.Abs(touchpos.y - position.y) && touchpos.x < position.x)) {
+            string tempTag = map.getElementTag(position.x - 10, position.y);
+            if (tempTag != "Wall" && tempTag != "WallBoundary")
+                position.x -= 10;
+        } else if (Input.GetKey(KeyCode.S) || (Mathf.Abs(touchpos.y - position.y) > Mathf.Abs(touchpos.x - position.x) && touchpos.y < position.y)) {
+            string tempTag = map.getElementTag(position.x, position.y - 10);
+            if (tempTag != "Wall" && tempTag != "WallBoundary")
+                position.y -= 10;
+        } else if (Input.GetKey(KeyCode.D) || (Mathf.Abs(touchpos.x - position.x) > Mathf.Abs(touchpos.y - position.y) && touchpos.x > position.x)) {
+            string tempTag = map.getElementTag(position.x + 10, position.y);
+            if (tempTag != "Wall" && tempTag != "WallBoundary") 
+                position.x += 10;
+        }
 
-		if (Input.GetKey(KeyCode.W)) {
-			string tempTag = map.getElementTag(position.x, position.y + 10);
-			if (tempTag != "Wall" && tempTag != "WallBoundary")
-				position.y += 10;
-		} else if (Input.GetKey(KeyCode.A)) {
-			string tempTag = map.getElementTag(position.x - 10, position.y);
-			if (tempTag != "Wall" && tempTag != "WallBoundary")
-				position.x -= 10;
-		} else if (Input.GetKey(KeyCode.S)) {
-			string tempTag = map.getElementTag(position.x, position.y - 10);
-			if (tempTag != "Wall" && tempTag != "WallBoundary")
-				position.y -= 10;
-		} else if (Input.GetKey(KeyCode.D)) {
-			string tempTag = map.getElementTag(position.x + 10, position.y);
-			if (tempTag != "Wall" && tempTag != "WallBoundary") 
-				position.x += 10;
-		}
-
-		destination = position;
-	}
+        destination = position;
+    }
 
 	void move() {
 		Vector3 newPosition = transform.position;
