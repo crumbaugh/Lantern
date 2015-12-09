@@ -5,6 +5,9 @@ public class lightSource : MonoBehaviour {
 	public GameObject shadow;
 	public GameObject TileMap;
 	private TileMap map;
+	private GameObject [] goArray;
+	private Vector3[] vertices;
+	private Vector3 [] goVertices;
 	
 	// Use this for initialization
 	void Start () {
@@ -15,10 +18,8 @@ public class lightSource : MonoBehaviour {
 	void Update () {
 		cleanseShadows();
 		revertSortingOrders();
-		GameObject [] goArray = FindObjectsOfType(typeof(GameObject)) as GameObject [];
+		goArray = FindObjectsOfType(typeof(GameObject)) as GameObject [];
 		for (int i = 0; i < goArray.Length; i++) {
-			Vector3 [] vertices = new Vector3[4];
-
 			if (goArray[i].layer == 8 && Vector3.Distance(transform.position, goArray[i].transform.position) < 45) {
 				vertices = getVertices(goArray[i]);
 
@@ -75,10 +76,10 @@ public class lightSource : MonoBehaviour {
 	}
 
 	Vector3 [] getVertices(GameObject go) {
-		Vector3 [] vertices = new Vector3[4];
+		vertices = new Vector3[4];
 		Vector3 goPosition  = go.transform.position;
 
-		Vector3 [] goVertices = new Vector3[4];
+		goVertices = new Vector3[4];
 		goVertices [0] = new Vector3 (goPosition.x - 5f, goPosition.y - 5f); //bottom left corner
 		goVertices [1] = new Vector3 (goPosition.x + 5f, goPosition.y - 5f); //bottom right corner
 		goVertices [2] = new Vector3 (goPosition.x - 5f, goPosition.y + 5f); //top left corner
@@ -114,7 +115,7 @@ public class lightSource : MonoBehaviour {
 	void cleanseShadows() {
 		GameObject [] shadows = GameObject.FindGameObjectsWithTag("Shadow");
 		for (int i = 0; i < shadows.Length; i++)
-			Destroy (shadows [i]);
+			Destroy(shadows [i]);
 	}
 
 	void revertSortingOrders() {
