@@ -1,0 +1,25 @@
+@font-face {
+	font-family: Corrupter;
+	src: url('Corrupter.ttf');
+}
+body {
+	background: #333;
+}
+#title {
+	cursor: grab;
+	top: 50%;
+	margin-top: -80px;
+	width: 100%;
+	position: absolute;
+	cursor:url("https://github.com/crumbaugh/Lantern/blob/master/twlSite/cursor.png?raw=true"), auto;
+}
+h1{
+	color: #111;
+	font-family: Corrupter;
+	font-size: 80px;
+	text-align: center;
+	@include transform( translateZ(0) );
+	@include text-shadow(3px 3px 0px rgba(196, 23, 83, 0.1) );
+	@include single-transition(text-shadow, 20ms);
+	-webkit-text-stroke: 1px rgba(196, 23, 83, 0.5);
+}
