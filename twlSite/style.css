@@ -11,7 +11,7 @@ body {
 	margin-top: -80px;
 	width: 100%;
 	position: absolute;
-	cursor:url("https://github.com/crumbaugh/Lantern/blob/master/twlSite/cursor.png?raw=true"), auto;
+	cursor:url("https://raw.githubusercontent.com/crumbaugh/Lantern/master/twlSite/cursor.png"), auto;
 }
 h1{
 	color: #111;
