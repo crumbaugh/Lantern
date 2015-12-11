@@ -1,10 +1,15 @@
 window.requestAnimFrame = (function(){
-      return  function( callback ){
-                window.setTimeout(callback, 1000);
-              };
-    })();
+  return  function( callback ){
+            window.setTimeout(callback, 1000);
+          };
+})();
 
 $(document).ready(function(){
+  window.setTimeout(function() {
+    $('#boxShadow').animate({
+      opacity: 1
+    }, 5000);
+  }, 3000);
    
   var $shadow = $('#shadow');
   var $boxShadow = $('#boxShadow');
@@ -33,10 +38,6 @@ $(document).ready(function(){
       
       $shadow.css({ textShadow: Math.ceil(shadowX) + 'px '+ Math.ceil(shadowY) +'px '+ Math.abs(shadowX*shadowY)/100 +'px rgba(0,0,0,0.4)' });
       $boxShadow.css({ boxShadow: Math.ceil(shadowX) + 'px '+ Math.ceil(shadowY) +'px '+ Math.abs(shadowX*shadowY)/100 +'px rgba(0,0,0,0.4)' });
-      
-      
    });
   })();
-   
-  
 }); 

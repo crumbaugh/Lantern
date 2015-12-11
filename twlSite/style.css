@@ -43,3 +43,6 @@ h2:hover {
 	transition: color 1s ease;
 	transition: border 1s ease;
 }
+#boxShadow {
+	opacity: 0;
+}
