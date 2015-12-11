@@ -7,6 +7,7 @@ window.requestAnimFrame = (function(){
 $(document).ready(function(){
    
   var $shadow = $('#shadow');
+  var $boxShadow = $('#boxShadow');
   var shadowLimit = 200;
   var moveEvent = ('ontouchstart' in document.documentElement) ? "touchmove" : "mousemove";
   
@@ -31,6 +32,7 @@ $(document).ready(function(){
       shadowY = (shadowY < shadowLimit*-1) ? shadowLimit*-1 : shadowY;
       
       $shadow.css({ textShadow: Math.ceil(shadowX) + 'px '+ Math.ceil(shadowY) +'px '+ Math.abs(shadowX*shadowY)/100 +'px rgba(0,0,0,0.4)' });
+      $boxShadow.css({ boxShadow: Math.ceil(shadowX) + 'px '+ Math.ceil(shadowY) +'px '+ Math.abs(shadowX*shadowY)/100 +'px rgba(0,0,0,0.4)' });
       
       
    });

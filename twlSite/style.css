@@ -4,14 +4,13 @@
 }
 body {
 	background: #333;
+	cursor:url("https://raw.githubusercontent.com/crumbaugh/Lantern/master/twlSite/cursor.png"), auto;
 }
 #title {
-	cursor: grab;
 	top: 50%;
 	margin-top: -80px;
 	width: 100%;
 	position: absolute;
-	cursor:url("https://raw.githubusercontent.com/crumbaugh/Lantern/master/twlSite/cursor.png"), auto;
 }
 h1{
 	color: #111;
@@ -22,4 +21,25 @@ h1{
 	@include text-shadow(3px 3px 0px rgba(196, 23, 83, 0.1) );
 	@include single-transition(text-shadow, 20ms);
 	-webkit-text-stroke: 1px rgba(196, 23, 83, 0.5);
+}
+h2 {
+	font-family: calibri;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	cursor: pointer;
+	border: 1px solid #ffff9b;
+	color: #ffff9b;
+	width: 80px;
+	height: 30px;
+	font-weight: normal;
+	padding: 5px 10px;
+	transition: color 1s ease;
+	transition: border 1s ease;
+}
+h2:hover {
+	color: #ff0;
+	border: 1px solid #ff0;
+	transition: color 1s ease;
+	transition: border 1s ease;
 }
