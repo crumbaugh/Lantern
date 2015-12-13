@@ -3,12 +3,12 @@
 	src: url('Corrupter.ttf');
 }
 body {
-	background: #333;
 	cursor:url("https://raw.githubusercontent.com/crumbaugh/Lantern/master/twlSite/cursor.png"), auto;
+	background-color: #333;
 }
 #title {
 	top: 50%;
-	margin-top: -80px;
+	margin-top: -200px;
 	width: 100%;
 	position: absolute;
 }
@@ -44,5 +44,6 @@ h2:hover {
 	transition: border 1s ease;
 }
 #boxShadow {
+	pointer-events: none;
 	opacity: 0;
 }

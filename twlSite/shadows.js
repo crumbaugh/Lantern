@@ -6,6 +6,7 @@ window.requestAnimFrame = (function(){
 
 $(document).ready(function(){
   window.setTimeout(function() {
+    $('#boxShadow').css('pointer-events', 'all');
     $('#boxShadow').animate({
       opacity: 1
     }, 5000);
@@ -40,4 +41,12 @@ $(document).ready(function(){
       $boxShadow.css({ boxShadow: Math.ceil(shadowX) + 'px '+ Math.ceil(shadowY) +'px '+ Math.abs(shadowX*shadowY)/100 +'px rgba(0,0,0,0.4)' });
    });
   })();
+
+
+  $('#boxShadow').bind('click', function(){ 
+    $('body').animate({
+      backgroundColor: '#000000'
+    }, 3000);
+  });
+
 }); 
