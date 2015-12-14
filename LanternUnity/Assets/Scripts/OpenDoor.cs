@@ -20,7 +20,6 @@ public class OpenDoor : MonoBehaviour {
 	void Update () {
 		if (Player.transform.position == transform.position) {
 			GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
-			Debug.Log (doors.Length);
 			foreach (GameObject door in doors) {
 				Color color = door.GetComponent<Renderer>().material.color;
 				color.a = 1;

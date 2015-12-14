@@ -1,0 +1,3 @@
+That Which Lurks uses some third-party assets, listed as follows:
+
+	The background music for the game, "Haunted Woods Loop", is licensed under the CC BY-SA 3.0 license. Its source can be found at http://opengameart.org/content/haunted-woods-horror-drone.

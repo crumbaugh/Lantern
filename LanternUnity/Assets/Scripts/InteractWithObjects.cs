@@ -3,26 +3,53 @@ using System.Collections;
 
 public class InteractWithObjects : MonoBehaviour {
 	public GameObject TileMap;
-
+	
 	private GameObject lantern;
+	private GameObject key1;
+	private GameObject key2;
+	private GameObject key3;
 	private TileMap map;
 	
 	// Use this for initialization
 	void Start () {
 		map = TileMap.GetComponent<TileMap>();
 		lantern = GameObject.FindGameObjectWithTag ("Lantern");
+		key1 = GameObject.FindGameObjectWithTag ("key1");
+		key2 = GameObject.FindGameObjectWithTag ("key2");
+		key3 = GameObject.FindGameObjectWithTag ("key3");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		handleColor(lantern);
+		handleColor(key1);
+		handleColor(key2);
+		handleColor(key3);
 		if (Input.GetKeyDown(KeyCode.Space) && transform.position.x % 10 == 0 && transform.position.y % 10 == 0) {
-			if (lantern.GetComponent<PickUpPutDown>().GetIsHeld()) {
-				lantern.GetComponent<PickUpPutDown>().SetIsHeld(false);
-			} else {
-				if (lantern.transform.position == transform.position)
-					lantern.GetComponent<PickUpPutDown>().SetIsHeld(true);
-			}
-		} 
-
+			handlePickUpPutDown(lantern);
+			handlePickUpPutDown(key1);
+			handlePickUpPutDown(key2);
+			handlePickUpPutDown(key3);
+		}
 	}
+	
+	private void handleColor(GameObject obj) {
+		if (obj.GetComponent<PickUpPutDown>().GetIsHeld()) {
+			obj.GetComponent<PickUpPutDown>().SetColor("holding");
+		} else if (Vector2.Distance(transform.position,obj.transform.position) <= 5) {
+			obj.GetComponent<PickUpPutDown>().SetColor("eligible");
+		} else {
+			obj.GetComponent<PickUpPutDown>().SetColor("ineligible");			
+		}
+	}
+	
+	private void handlePickUpPutDown(GameObject obj) {
+		if (obj.GetComponent<PickUpPutDown>().GetIsHeld()) {
+			obj.GetComponent<PickUpPutDown>().SetIsHeld(false);
+		} else {
+			if (obj.transform.position == transform.position)
+				obj.GetComponent<PickUpPutDown>().SetIsHeld(true);
+		}
+	}
+	
 }

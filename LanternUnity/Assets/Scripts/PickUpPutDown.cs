@@ -5,12 +5,18 @@ public class PickUpPutDown : MonoBehaviour {
 	public GameObject player;
 	public Color downColor;
 	public Color heldColor;
+	public Color eligibleColor;
 	private bool IsHeld;
 	
 	// Use this for initialization
 	void Start () {
-		IsHeld = true;
-		GetComponent<SpriteRenderer>().color = heldColor;
+		if ((Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag ("Lantern").transform.position)) == 0) {
+			IsHeld = true;
+			GetComponent<SpriteRenderer>().color = heldColor;
+		} else {
+			IsHeld = false;
+			GetComponent<SpriteRenderer>().color = downColor;
+		}
 	}
 	
 	// Update is called once per frame
@@ -20,6 +26,7 @@ public class PickUpPutDown : MonoBehaviour {
 		}
 	}
 
+	
 	public void SetIsHeld(bool b) {
 		IsHeld = b;
 		if (!IsHeld) {
@@ -29,13 +36,25 @@ public class PickUpPutDown : MonoBehaviour {
 			temp.y = (int)temp.y / 10;
 			temp.y = temp.y * 10;
 			transform.position = temp;
-			GetComponent<SpriteRenderer>().color = downColor;
+			SetColor("holding");
 		} else {
-			GetComponent<SpriteRenderer>().color = heldColor;
+			SetColor("ineligible");
 		}
 	}
-
+	
 	public bool GetIsHeld() {
 		return IsHeld;
+	}
+	
+	public void SetColor(string status) {
+		if (status == "holding") {
+			GetComponent<SpriteRenderer>().color = heldColor;
+			return;
+		}
+		if (status == "eligible") {
+			GetComponent<SpriteRenderer>().color = eligibleColor;
+			return;
+		}
+		GetComponent<SpriteRenderer>().color = downColor;
 	}
 }
