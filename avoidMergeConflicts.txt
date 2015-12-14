@@ -1,56 +1,76 @@
 FOR BEN:
 
-this goes in pickupputdown
+i love you ;)
 
-public void SetIsHeld(bool b) {
-		IsHeld = b;
-		if (!IsHeld) {
-			Vector3 temp = transform.position;
-			temp.x = (int)temp.x / 10;
-			temp.x = temp.x * 10;
-			temp.y = (int)temp.y / 10;
-			temp.y = temp.y * 10;
-			transform.position = temp;
-			SetColor("holding");
-		} else {
-			SetColor("ineligible");
-		}
-	}
-
-	public bool GetIsHeld() {
-		return IsHeld;
-	}
-
-	public void SetColor(string status) {
-		if (status == "holding") {
+in pickupputdown
+	void Start () {
+		if ((Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag ("Lantern").transform.position)) == 0) {
+			IsHeld = true;
 			GetComponent<SpriteRenderer>().color = heldColor;
-			return;
+		} else {
+			IsHeld = false;
+			GetComponent<SpriteRenderer>().color = downColor;
 		}
-		if (status == "eligible") {
-			GetComponent<SpriteRenderer>().color = eligibleColor;
-			return;
-		}
-		GetComponent<SpriteRenderer>().color = downColor;
 	}
 
 
-this is the new update in interactwithobjects
 
+
+
+and then allllll a this is the interactwithobjects file
+
+using UnityEngine;
+using System.Collections;
+
+public class InteractWithObjects : MonoBehaviour {
+	public GameObject TileMap;
+
+	private GameObject lantern;
+	private GameObject key1;
+//	private GameObject key2;
+//	private GameObject key3;
+	private TileMap map;
+	
+	// Use this for initialization
+	void Start () {
+		map = TileMap.GetComponent<TileMap>();
+		lantern = GameObject.FindGameObjectWithTag ("Lantern");
+		key1 = GameObject.FindGameObjectWithTag ("Key1");
+//		key2 = GameObject.FindGameObjectWithTag ("Key2");
+//		key3 = GameObject.FindGameObjectWithTag ("Key3");
+	}
+	
 	// Update is called once per frame
 	void Update () {
-		if (lantern.GetComponent<PickUpPutDown>().GetIsHeld()) {
-			lantern.GetComponent<PickUpPutDown>().SetColor("holding");
-		} else if (Vector2.Distance(transform.position,lantern.transform.position) <= 5) {
-			lantern.GetComponent<PickUpPutDown>().SetColor("eligible");
-		} else {
-			lantern.GetComponent<PickUpPutDown>().SetColor("ineligible");			
-		}
+		handleColor(lantern);
+		handleColor(key1);
+//		handleColor(key2);
+//		handleColor(key3);
 		if (Input.GetKeyDown(KeyCode.Space) && transform.position.x % 10 == 0 && transform.position.y % 10 == 0) {
-			if (lantern.GetComponent<PickUpPutDown>().GetIsHeld()) {
-				lantern.GetComponent<PickUpPutDown>().SetIsHeld(false);
-			} else {
-				if (lantern.transform.position == transform.position)
-					lantern.GetComponent<PickUpPutDown>().SetIsHeld(true);
-			}
+			handlePickUpPutDown(lantern);
+			handlePickUpPutDown(key1);
+//			handlePickUpPutDown(key2);
+//			handlePickUpPutDown(key3);
 		}
 	}
+
+	private void handleColor(GameObject obj) {
+		if (obj.GetComponent<PickUpPutDown>().GetIsHeld()) {
+			obj.GetComponent<PickUpPutDown>().SetColor("holding");
+		} else if (Vector2.Distance(transform.position,obj.transform.position) <= 5) {
+			obj.GetComponent<PickUpPutDown>().SetColor("eligible");
+		} else {
+			obj.GetComponent<PickUpPutDown>().SetColor("ineligible");			
+		}
+	}
+
+	private void handlePickUpPutDown(GameObject obj) {
+		if (obj.GetComponent<PickUpPutDown>().GetIsHeld()) {
+			obj.GetComponent<PickUpPutDown>().SetIsHeld(false);
+		} else {
+			if (obj.transform.position == transform.position)
+				obj.GetComponent<PickUpPutDown>().SetIsHeld(true);
+		}
+	}
+
+}
