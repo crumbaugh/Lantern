@@ -32,4 +32,4 @@ Copyright
 ---------
 This project uses no third-party art assets. All art was created by our team.
 
-The background music used in this game was created by a third party. For more information, see third-party.txt in the root directory.
+The background music used in this game, as well as some attributes of our website, were created by a third party. For more information, see third-party.txt in the root directory.
