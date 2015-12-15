@@ -22,9 +22,11 @@ public class InteractWithObjects : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		handleColor(lantern);
-		handleColor(key1);
-		handleColor(key2);
-		handleColor(key3);
+		if (GameObject.FindGameObjectWithTag ("key1") != null) {
+			handleColor(key1);
+			handleColor(key2);
+			handleColor(key3);
+		}
 
 		bool touchPickup = false;
 		Vector3 touchpos;
@@ -36,9 +38,19 @@ public class InteractWithObjects : MonoBehaviour {
 
 		if (touchPickup || (Input.GetKeyDown(KeyCode.Space) && transform.position.x % 10 == 0 && transform.position.y % 10 == 0)) {
 			handlePickUpPutDown(lantern);
-			handlePickUpPutDown(key1);
-			handlePickUpPutDown(key2);
-			handlePickUpPutDown(key3);
+			if (GameObject.FindGameObjectWithTag ("key1") != null) {
+				handlePickUpPutDown(key1);
+				handlePickUpPutDown(key2);
+				handlePickUpPutDown(key3);
+			}
+		}
+
+		if ((GameObject.FindGameObjectWithTag ("key1") == null) &&
+			(GameObject.FindGameObjectWithTag("Door") != null) &&
+			(Vector2.Distance(GameObject.FindGameObjectWithTag("Door").transform.position, transform.position) <= 5)) {
+			Application.LoadLevel("Level2");
+		} else if ((GameObject.FindGameObjectWithTag ("key1") != null) && Vector2.Distance(GameObject.FindGameObjectWithTag("Door").transform.position, transform.position) <= 10) {
+			Application.LoadLevel("Main Menu");
 		}
 	}
 	
