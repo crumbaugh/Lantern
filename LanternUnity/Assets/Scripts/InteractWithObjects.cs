@@ -47,8 +47,9 @@ public class InteractWithObjects : MonoBehaviour {
 		if (obj.GetComponent<PickUpPutDown>().GetIsHeld()) {
 			obj.GetComponent<PickUpPutDown>().SetIsHeld(false);
 		} else {
-			if (obj.transform.position == transform.position)
+			if (obj.transform.position == transform.position) {
 				obj.GetComponent<PickUpPutDown>().SetIsHeld(true);
+			}
 		}
 	}
 	
