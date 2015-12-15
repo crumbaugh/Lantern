@@ -48,9 +48,9 @@ public class InteractWithObjects : MonoBehaviour {
 		if ((GameObject.FindGameObjectWithTag ("key1") == null) &&
 			(GameObject.FindGameObjectWithTag("Door") != null) &&
 			(Vector2.Distance(GameObject.FindGameObjectWithTag("Door").transform.position, transform.position) <= 5)) {
-			Application.LoadLevel("Level2");
-		} else if ((GameObject.FindGameObjectWithTag ("key1") != null) && Vector2.Distance(GameObject.FindGameObjectWithTag("Door").transform.position, transform.position) <= 10) {
 			Application.LoadLevel("Main Menu");
+		} else if ((GameObject.FindGameObjectWithTag ("key1") != null) && Vector2.Distance(GameObject.FindGameObjectWithTag("Door").transform.position, transform.position) <= 10) {
+			Application.LoadLevel("Level1");
 		}
 	}
 	

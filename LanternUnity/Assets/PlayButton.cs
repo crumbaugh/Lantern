@@ -22,6 +22,6 @@ public class PlayButton : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		Application.LoadLevel ("Level1");
+		Application.LoadLevel ("Level2");
 	}
 }
