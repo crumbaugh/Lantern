@@ -7,7 +7,7 @@ public class PickUpPutDown : MonoBehaviour {
 	public Color eligibleColor;
 	public Color heldColor;
 	private bool IsHeld;
-	private GameObject door;
+	private GameObject [] door;
 	private bool isKey;
 
 	// Use this for initialization
@@ -18,13 +18,13 @@ public class PickUpPutDown : MonoBehaviour {
 			GetComponent<SpriteRenderer>().color = heldColor;
 		} else {
 			if ((Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag ("key1").transform.position)) == 0) {
-				door = GameObject.FindGameObjectWithTag("Door1");
+				door = GameObject.FindGameObjectsWithTag("Door1");
 			}
 			if ((Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag ("key2").transform.position)) == 0) {
-				door = GameObject.FindGameObjectWithTag("Door2");
+				door = GameObject.FindGameObjectsWithTag("Door2");
 			}
 			if ((Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag ("key3").transform.position)) == 0) {
-				door = GameObject.FindGameObjectWithTag("Door3");
+				door = GameObject.FindGameObjectsWithTag("Door3");
 			}
 			IsHeld = false;
 			isKey = true;
@@ -75,11 +75,22 @@ public class PickUpPutDown : MonoBehaviour {
 	}
 	
 	public void openDoor() {
-		if ((Vector2.Distance(transform.position, door.transform.position)) < 10) {
-			Color newcolor = door.GetComponent<Renderer>().material.color;
-			newcolor.a = 0;
-			door.GetComponent<Renderer>().material.color = newcolor;
-			transform.GetComponent<Renderer>().material.color= newcolor;
+		for (int i = 0; i < door.Length; i++) {
+			GameObject tempDoor = door[i];
+			if ((Vector2.Distance (transform.position, door[i].transform.position)) < 12) {
+				Color newcolor = door[i].GetComponent<Renderer> ().material.color;
+				newcolor.a = 0;
+				door[i].GetComponent<Renderer> ().material.color = newcolor;
+				transform.GetComponent<Renderer> ().material.color = newcolor;
+				door[i].tag = "Untagged";
+				if (i == 0) {
+					door[1].GetComponent<Renderer> ().material.color = newcolor;
+					door[1].tag = "Untagged";
+				} else if (i == 1) {
+					door[0].GetComponent<Renderer> ().material.color = newcolor;
+					door[0].tag = "Untagged";
+				}
+			}
 		}
 	}
 }
