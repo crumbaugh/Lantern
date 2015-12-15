@@ -1,3 +1,7 @@
 That Which Lurks uses some third-party assets, listed as follows:
 
 	The background music for the game, "Haunted Woods Loop", is licensed under the CC BY-SA 3.0 license. Its source can be found at http://opengameart.org/content/haunted-woods-horror-drone.
+
+	Some of the animations on our site (i.e. text-shadow effects) can be found here: http://codepen.io/briangonzalez/pen/Btmpe
+
+	The font that is used is "Corrupter" and its source is available in the twlSite folder. The other font that is used is a Google font.
