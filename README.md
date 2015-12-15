@@ -21,9 +21,9 @@ For more information, check out our [repo](https://github.com/crumbaugh/Lantern)
 
 To Run
 ------
-To run That Which Lurks on your mobile device, TODO: Chase, work your magic.
+To run That Which Lurks on your mobile device, either a) build for mobile, or b) simply run using the unity remote. Option (a) provides a more optimized experience with less lag, while option (b) is faster.
 
-All scenes in the "Scenes" folder are used in That Which Lurks.
+All scenes in the "Scenes" folder are used in That Which Lurks, though the starting scene is Main Menu.
 
 
 

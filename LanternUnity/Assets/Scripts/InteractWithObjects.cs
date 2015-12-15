@@ -25,7 +25,16 @@ public class InteractWithObjects : MonoBehaviour {
 		handleColor(key1);
 		handleColor(key2);
 		handleColor(key3);
-		if (Input.GetKeyDown(KeyCode.Space) && transform.position.x % 10 == 0 && transform.position.y % 10 == 0) {
+
+		bool touchPickup = false;
+		Vector3 touchpos;
+		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
+			touchpos = Camera.main.ScreenToWorldPoint (Input.GetTouch(0).position);
+			if (Vector3.Distance (touchpos, transform.position) < 15)
+				touchPickup = true; 
+		}
+
+		if (touchPickup || (Input.GetKeyDown(KeyCode.Space) && transform.position.x % 10 == 0 && transform.position.y % 10 == 0)) {
 			handlePickUpPutDown(lantern);
 			handlePickUpPutDown(key1);
 			handlePickUpPutDown(key2);

@@ -28,19 +28,19 @@ public class PlayerMovement : MonoBehaviour {
             touchpos = transform.position;
         Vector3 position = transform.position;
                 
-        if (Input.GetKey(KeyCode.W) || (Mathf.Abs(touchpos.y - position.y) > Mathf.Abs(touchpos.x - position.x) && touchpos.y > position.y)) {
+		if (Input.GetKey(KeyCode.W) || (((Mathf.Abs(touchpos.y - position.y) > Mathf.Abs(touchpos.x - position.x) && touchpos.y > position.y) && Vector3.Distance(touchpos, transform.position) > 15) && Input.touchCount > 0)) {
             string tempTag = map.getElementTag(position.x, position.y + 10);
 			if (tempTag != "Wall" && tempTag != "WallBoundary" && tempTag != "Door1" && tempTag != "Door2" && tempTag != "Door3")
                 position.y += 10;
-        } else if (Input.GetKey(KeyCode.A) || (Mathf.Abs(touchpos.x - position.x) > Mathf.Abs(touchpos.y - position.y) && touchpos.x < position.x)) {
+		} else if (Input.GetKey(KeyCode.A) || (((Mathf.Abs(touchpos.x - position.x) > Mathf.Abs(touchpos.y - position.y) && touchpos.x < position.x) && Vector3.Distance(touchpos, transform.position) > 15) && Input.touchCount > 0)) {
             string tempTag = map.getElementTag(position.x - 10, position.y);
 			if (tempTag != "Wall" && tempTag != "WallBoundary" && tempTag != "Door1" && tempTag != "Door2" && tempTag != "Door3")
                 position.x -= 10;
-        } else if (Input.GetKey(KeyCode.S) || (Mathf.Abs(touchpos.y - position.y) > Mathf.Abs(touchpos.x - position.x) && touchpos.y < position.y)) {
+		} else if (Input.GetKey(KeyCode.S) || (((Mathf.Abs(touchpos.y - position.y) > Mathf.Abs(touchpos.x - position.x) && touchpos.y < position.y) && Vector3.Distance(touchpos, transform.position) > 15) && Input.touchCount > 0)) {
             string tempTag = map.getElementTag(position.x, position.y - 10);
 			if (tempTag != "Wall" && tempTag != "WallBoundary" && tempTag != "Door1" && tempTag != "Door2" && tempTag != "Door3")
                 position.y -= 10;
-        } else if (Input.GetKey(KeyCode.D) || (Mathf.Abs(touchpos.x - position.x) > Mathf.Abs(touchpos.y - position.y) && touchpos.x > position.x)) {
+		} else if (Input.GetKey(KeyCode.D) || (((Mathf.Abs(touchpos.x - position.x) > Mathf.Abs(touchpos.y - position.y) && touchpos.x > position.x) && Vector3.Distance(touchpos, transform.position) > 15) && Input.touchCount > 0)) {
             string tempTag = map.getElementTag(position.x + 10, position.y);
 			if (tempTag != "Wall" && tempTag != "WallBoundary" && tempTag != "Door1" && tempTag != "Door2" && tempTag != "Door3") 
                 position.x += 10;
