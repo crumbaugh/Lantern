@@ -10,7 +10,7 @@ Team members
 
 Description
 ---------
-That Which Lurks is a puzzle-game based in the realm of gothic horror. Wander the rooms of an ancient castle, casting your lantern against the shadows... and fending off that which lurks inside. Play as a groundskeeper and make your way through room after room, lighting torches along the way. Be careful of your surroundings, and make sure to stay in the light.
+That Which Lurks is a puzzle-game based in the realm of gothic horror. Wander the rooms of an ancient castle, casting your lantern against the shadows... and fending off that which lurks inside. Play as a groundskeeper and make your way through room after room, until you make it to the bright outside. Be careful of your surroundings, and make sure to stay in the light.
 
 That Which Lurks is tap-to-touch. To move in a given direction, tap an area of the screen that is in that direction relative to your character. To pick up an item you are near, tap on it. To put down an item, tap on yourself.
 
