@@ -4,4 +4,6 @@ That Which Lurks uses some third-party assets, listed as follows:
 
 	Some of the animations on our site (i.e. text-shadow effects) can be found here: http://codepen.io/briangonzalez/pen/Btmpe
 
-	The font that is used is "Corrupter" and its source is available in the twlSite folder. The other font that is used is a Google font.
+	The font that is used is "Corrupter" and its source is available in the twlSite folder, but it can also be found here: http://www.dafont.com/corrupter.font. It is free for "personal use" and as we are not making a profit off of the website advertising our game, we are filing this project under personal use. Were we to move this game into a profit-making stage, we would obtain more extensive rights for the font, or we would use a different font.
+
+	The other font that is used is "Lato", a Google font. Read more about it here: https://www.google.com/fonts/specimen/Lato
