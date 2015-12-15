@@ -1,76 +1,89 @@
 FOR BEN:
 
-i love you ;)
+doody.
 
-in pickupputdown
-	void Start () {
-		if ((Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag ("Lantern").transform.position)) == 0) {
-			IsHeld = true;
-			GetComponent<SpriteRenderer>().color = heldColor;
-		} else {
-			IsHeld = false;
-			GetComponent<SpriteRenderer>().color = downColor;
-		}
-	}
-
-
-
-
-
-and then allllll a this is the interactwithobjects file
-
+@pickupputdown
 using UnityEngine;
 using System.Collections;
 
-public class InteractWithObjects : MonoBehaviour {
-	public GameObject TileMap;
+public class PickUpPutDown : MonoBehaviour {
+       public GameObject player;
+       public Color downColor;
+       public Color eligibleColor;
+       public Color heldColor;
+       private bool IsHeld;
+       private GameObject door;
+       private bool isKey;
+       private int keyNum;
+       
+       // Use this for initialization
+       void Start () {
+       	    if ((Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag ("Lantern").transform.position)) == 0) {
+	       					      IsHeld = true;
+						      	       isKey = false;
+							       	       GetComponent<SpriteRenderer>().color = heldColor;
+								       					    } else {
+													      	   IsHeld = false;
+														   	    isKey = true;
+															    	    if ((Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag ("key1").transform.position)) == 0) {
+																       					      				       keyNum = 1;
+																									       	      	} else if ((Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag ("key2").transform.position)) == 0) {
+																											       	  keyNum = 2;
+																												  	   } else if ((Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag ("key3").transform.position)) == 0) {
+																													     	     keyNum = 3;
+																														     	      }
+																															        GetComponent<SpriteRenderer>().color = downColor;
+																																				     }
+																																				      door = GameObject.FindGameObjectWithTag("Door");
+																																				      }
+																																				      
+																																				      // Update is called once per frame
+																																				      void Update () {
+																																				      	   if (IsHeld) {
+																																					      	       transform.position = player.transform.position;
+																																						       			    if (isKey) {
+																																									       	        openDoor(keyNum);
+																																											  }
+																																											   }
+																																											   }
 
-	private GameObject lantern;
-	private GameObject key1;
-//	private GameObject key2;
-//	private GameObject key3;
-	private TileMap map;
-	
-	// Use this for initialization
-	void Start () {
-		map = TileMap.GetComponent<TileMap>();
-		lantern = GameObject.FindGameObjectWithTag ("Lantern");
-		key1 = GameObject.FindGameObjectWithTag ("Key1");
-//		key2 = GameObject.FindGameObjectWithTag ("Key2");
-//		key3 = GameObject.FindGameObjectWithTag ("Key3");
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		handleColor(lantern);
-		handleColor(key1);
-//		handleColor(key2);
-//		handleColor(key3);
-		if (Input.GetKeyDown(KeyCode.Space) && transform.position.x % 10 == 0 && transform.position.y % 10 == 0) {
-			handlePickUpPutDown(lantern);
-			handlePickUpPutDown(key1);
-//			handlePickUpPutDown(key2);
-//			handlePickUpPutDown(key3);
-		}
-	}
+																																											   public void SetIsHeld(bool b) {
+																																											   	  IsHeld = b;
+																																												  	 if (!IsHeld) {
+																																													    	      Vector3 temp = transform.position;
+																																														      	      	   temp.x = (int)temp.x / 10;
+																																																   	    temp.x = temp.x * 10;
+																																																	    	     temp.y = (int)temp.y / 10;
+																																																		     	      temp.y = temp.y * 10;
+																																																			      	       transform.position = temp;
+																																																				       			    SetColor("holding");
+																																																							     } else {
+																																																							       	    SetColor("ineligible");
+																																																								     }
+																																																								     }
 
-	private void handleColor(GameObject obj) {
-		if (obj.GetComponent<PickUpPutDown>().GetIsHeld()) {
-			obj.GetComponent<PickUpPutDown>().SetColor("holding");
-		} else if (Vector2.Distance(transform.position,obj.transform.position) <= 5) {
-			obj.GetComponent<PickUpPutDown>().SetColor("eligible");
-		} else {
-			obj.GetComponent<PickUpPutDown>().SetColor("ineligible");			
-		}
-	}
+																																																								     public bool GetIsHeld() {
+																																																								     	    return IsHeld;
+																																																									    }
 
-	private void handlePickUpPutDown(GameObject obj) {
-		if (obj.GetComponent<PickUpPutDown>().GetIsHeld()) {
-			obj.GetComponent<PickUpPutDown>().SetIsHeld(false);
-		} else {
-			if (obj.transform.position == transform.position)
-				obj.GetComponent<PickUpPutDown>().SetIsHeld(true);
-		}
-	}
+																																																									    public void SetColor(string status) {
+																																																									    	   if (status == "holding") {
+																																																										      	      GetComponent<SpriteRenderer>().color = heldColor;
+																																																											      					     return;
+																																																																      }
+																																																																       if (status == "eligible") {
+																																																																       	  	  GetComponent<SpriteRenderer>().color = eligibleColor;
+																																																																		  				       	 return;
+																																																																							  }
+																																																																							   GetComponent<SpriteRenderer>().color = downColor;
+																																																																							   }
 
+																																																																							   public void openDoor(int i) {
+																																																																							   	  if ((Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag ("Door" + i).transform.position)) < 10) {
+																																																																								     					    Color newcolor = door.GetComponent<Renderer>().material.color;
+																																																																													    	  	   newcolor.a = 0;
+																																																																															   	      	door.GetComponent<Renderer>().material.color = newcolor;
+																																																																																						       transform.GetComponent<Renderer>().material.color= newcolor;
+																																																																																						       							  }
+																																																																																													  }
 }
