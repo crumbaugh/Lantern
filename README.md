@@ -1,6 +1,5 @@
-That Which Lurks (Formerly called Lantern)
+#That Which Lurks
 
-======
 
 Team members
 --------
